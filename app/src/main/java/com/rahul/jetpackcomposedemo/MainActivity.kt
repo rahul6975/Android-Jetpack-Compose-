@@ -3,8 +3,13 @@ package com.rahul.jetpackcomposedemo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColor
+import androidx.compose.animation.core.TweenSpec
+import androidx.compose.animation.core.updateTransition
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -26,7 +31,8 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
 //                    Greeting("Rahul")
-                    ClickableText()
+//                    ClickableText()
+                    AnimateColorComponent()
                 }
             }
         }
@@ -87,4 +93,33 @@ fun ClickableTextPreview() {
     Column {
         ClickableText()
     }
+}
+
+@Composable
+fun AnimateColorComponent() {
+    val currentColor by remember {
+        mutableStateOf(Color.Red)
+    }
+    val transition = updateTransition(currentColor)
+    val color by transition.animateColor(
+        transitionSpec = { TweenSpec<Color>(durationMillis = 2000) }
+    ) { state ->
+        when (state) {
+            Color.Red -> Color.Green
+            Color.Green -> Color.Blue
+            Color.Blue -> Color.Red
+            else -> Color.Red
+        }
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = color)
+    ) { }
+}
+
+@Preview
+@Composable
+fun AnimateColorComponentPreview() {
+    AnimateColorComponent()
 }
