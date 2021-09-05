@@ -32,58 +32,58 @@ class LiveDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val viewModel = ViewModelProvider(this).get(SuperheroesViewModel::class.java)
         setContent {
-            LiveDataComponent(viewModel.superheroes)
+//            LiveDataComponent(viewModel.superheroes)
         }
     }
 }
 @Composable
 fun LiveDataComponent(personListLiveData: LiveData<List<Person>>) {
-    val personList by personListLiveData.observeAsState(initial = emptyList())
-    if (personList.isEmpty()) {
-        LiveDataLoadingComponent()
-    } else {
-        LiveDataComponentList(personList)
-    }
+//    val personList by personListLiveData.observeAsState(initial = emptyList())
+//    if (personList.isEmpty()) {
+//        LiveDataLoadingComponent()
+//    } else {
+//        LiveDataComponentList(personList)
+//    }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun LiveDataComponentList(personList: List<Person>) {
-    LazyColumn {
-        items(
-            items = personList, itemContent = { person ->
-                Card(
-                    shape = RoundedCornerShape(4.dp),
-                    backgroundColor = Color.White,
-                    modifier = Modifier.fillParentMaxWidth().padding(8.dp)
-                ) {
-                    ListItem(text = {
-                        Text(
-                            text = person.name,
-                            style = TextStyle(
-                                fontFamily = FontFamily.Serif, fontSize = 25.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                        )
-                    }, secondaryText = {
-                        Text(
-                            text = "Age: ${person.age}",
-                            style = TextStyle(
-                                fontFamily = FontFamily.Serif, fontSize = 15.sp,
-                                fontWeight = FontWeight.Light, color = Color.DarkGray
-                            )
-                        )
-                    }, icon = {
-                        person.profilePictureUrl?.let { imageUrl ->
-                            NetworkImageComponentPicasso(
-                                url = imageUrl,
-                                modifier = Modifier.width(60.dp).height(60.dp)
-                            )
-                        }
-                    })
-                }
-            })
-    }
+//    LazyColumn {
+//        items(
+//            items = personList, itemContent = { person ->
+//                Card(
+//                    shape = RoundedCornerShape(4.dp),
+//                    backgroundColor = Color.White,
+//                    modifier = Modifier.fillParentMaxWidth().padding(8.dp)
+//                ) {
+//                    ListItem(text = {
+//                        Text(
+//                            text = person.name,
+//                            style = TextStyle(
+//                                fontFamily = FontFamily.Serif, fontSize = 25.sp,
+//                                fontWeight = FontWeight.Bold
+//                            )
+//                        )
+//                    }, secondaryText = {
+//                        Text(
+//                            text = "Age: ${person.age}",
+//                            style = TextStyle(
+//                                fontFamily = FontFamily.Serif, fontSize = 15.sp,
+//                                fontWeight = FontWeight.Light, color = Color.DarkGray
+//                            )
+//                        )
+//                    }, icon = {
+//                        person.profilePictureUrl?.let { imageUrl ->
+//                            NetworkImageComponentPicasso(
+//                                url = imageUrl,
+//                                modifier = Modifier.width(60.dp).height(60.dp)
+//                            )
+//                        }
+//                    })
+//                }
+//            })
+//    }
 }
 @Composable
 fun LiveDataLoadingComponent() {
@@ -100,8 +100,8 @@ fun LiveDataLoadingComponent() {
 fun LaunchInCompositionComponent(viewModel: SuperheroesViewModel) {
     val personList = remember { mutableStateListOf<Person>() }
     LaunchedEffect(Unit) {
-        val list = viewModel.loadSuperheroes()
-        personList.addAll(list)
+//        val list = viewModel.loadSuperheroes()
+//        personList.addAll(list)
     }
     if (personList.isEmpty()) {
         LiveDataLoadingComponent()
@@ -109,11 +109,11 @@ fun LaunchInCompositionComponent(viewModel: SuperheroesViewModel) {
     }
     LiveDataComponentList(personList)
 }
-@Preview
-@Composable
-fun LiveDataComponentListPreview() {
-    LiveDataComponentList(getSuperheroList())
-}
+//@Preview
+//@Composable
+//fun LiveDataComponentListPreview() {
+//    LiveDataComponentList(getSuperheroList())
+//}
 
 @Preview
 @Composable
