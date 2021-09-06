@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackComposeDemo">
         <activity
+            android:name=".ImageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BackPressActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" />
         <activity
