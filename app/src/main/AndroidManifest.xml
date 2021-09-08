@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackComposeDemo">
         <activity
+            android:name=".FixedActionButtonActivity"
+            android:exported="true" />
+        <activity
             android:name=".ImageActivity"
             android:exported="true" />
         <activity
