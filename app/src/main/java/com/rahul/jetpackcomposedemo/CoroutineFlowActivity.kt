@@ -83,7 +83,7 @@ fun FlowComponent(flow: Flow<Int>) {
 // think of composable functions to be similar to lego blocks - each composable function is in turn
 // built up of smaller composable functions.
 @Composable
-fun CountdownText(text: String, color: Color = Color.Black) {
+fun CountdownText(text: String, color: Color = Color.Yellow) {
     // Text is a predefined composable that does exactly what you'd expect it to -
     // display text on the screen. It allows you to customize its appearance using the
     // style property.
