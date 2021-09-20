@@ -53,7 +53,7 @@ fun FlowComponent(flow: Flow<Int>) {
 }
 
 @Composable
-fun CountdownText(text: String, color: Color = Color.Yellow) {
+fun CountdownText(text: String, color: Color = Color.Green) {
     Text(
         text = text,
         color = color,
